@@ -1,0 +1,10 @@
+iplementing crag into model
+
+
+1. docs need to be indexed
+
+once docs are indexed into knowlege base then process can occur. 
+
+retriever -(relevant docs)-> retriever_eval --> know_refine | know_search
+knowledge refinement
+	d_i --> strip_k --> (filtered w/ retrieval eval) --> strip_k --> k_in

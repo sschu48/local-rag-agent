@@ -1,0 +1,27 @@
+
+tools needed for CRAG: 
+- retriever
+- retriever_evaluator
+- generation
+- knowledge_refinement
+- knowledge_searching
+- web_search
+- generator
+
+flow: 
+
+retriever: 
+query (q) --> retriever --> relevant docs
+
+knowledge_correction: 
+relevant docs --> retriever_evaluator --> DECISION[knowledge_refinement | knowledge_searching]
+knowledge_refinement: decompose docs into "strips" --> retriever_evaluator --> compose new "strips" into knowledge_refinement
+knowledge_searching: web_search --> k_n --> retriever_evaluator --> k_ex
+
+generation:
+IF retriever_evaluator == "CORRECT" --> query + k_in
+ELSE IF retriever_evaluator == "AMBIGUOUS" --> query + k_in + k_ex
+ELSE IF retriever_evaluator == "INCORRECT" --> query + k_ex
+
+generator: 
+predicts output (y) based on x and k_in | k_ex
